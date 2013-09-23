@@ -2,7 +2,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>Snake</name>
+            <name>ks0108</name>
             <creation-uuid>53e972bf-4840-41f7-ae89-3d00be416090</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
