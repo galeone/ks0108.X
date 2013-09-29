@@ -8,6 +8,8 @@
       <itemPath>active_delay.h</itemPath>
       <itemPath>sfr_macros.h</itemPath>
       <itemPath>pinmask.h</itemPath>
+      <itemPath>ascii.h</itemPath>
+      <itemPath>ascii.c</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -26,6 +28,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>fonts</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

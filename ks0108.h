@@ -7,6 +7,7 @@
 
 #include "active_delay.h"
 #include "pinmask.h"
+#include "ascii.h"
 
 #ifndef KS0108_H
 #define	KS0108_H
@@ -53,6 +54,8 @@ extern "C" {
         ks0108_RIGHT
     } ks0108_side;
 
+    unsigned short int _ks0108_X, _ks0108_Y; //Global positions, always updated
+
     void ks0108_init(
             volatile unsigned int *DATA_OR_INSTRUCTION,
             volatile unsigned int * READ_WRITE, volatile unsigned int *E,
@@ -71,38 +74,18 @@ extern "C" {
     void ks0108_e_low(void);
     void ks0108_set_side(ks0108_side side);
     void ks0108_cls(void);
+    void ks0108_write_string(char *string);
 
-#define __ks0108_SET_DB_AS_OUTPUT() { \
-    *(__SFR_TRISCLR(_ks0108_DB[0])) = _ks0108_DB_MASK[0]; \
-    *(__SFR_TRISCLR(_ks0108_DB[1])) = _ks0108_DB_MASK[1]; \
-    *(__SFR_TRISCLR(_ks0108_DB[2])) = _ks0108_DB_MASK[2]; \
-    *(__SFR_TRISCLR(_ks0108_DB[3])) = _ks0108_DB_MASK[3]; \
-    *(__SFR_TRISCLR(_ks0108_DB[4])) = _ks0108_DB_MASK[4]; \
-    *(__SFR_TRISCLR(_ks0108_DB[5])) = _ks0108_DB_MASK[5]; \
-    *(__SFR_TRISCLR(_ks0108_DB[6])) = _ks0108_DB_MASK[6]; \
-    *(__SFR_TRISCLR(_ks0108_DB[7])) = _ks0108_DB_MASK[7]; \
-}
+void extern inline __ks0108_SET_DB_AS_OUTPUT(void);
 
-#define __ks0108_SET_DB_AS_INPUT() { \
-    *(__SFR_TRISSET(_ks0108_DB[0])) = _ks0108_DB_MASK[0]; \
-    *(__SFR_TRISSET(_ks0108_DB[1])) = _ks0108_DB_MASK[1]; \
-    *(__SFR_TRISSET(_ks0108_DB[2])) = _ks0108_DB_MASK[2]; \
-    *(__SFR_TRISSET(_ks0108_DB[3])) = _ks0108_DB_MASK[3]; \
-    *(__SFR_TRISSET(_ks0108_DB[4])) = _ks0108_DB_MASK[4]; \
-    *(__SFR_TRISSET(_ks0108_DB[5])) = _ks0108_DB_MASK[5]; \
-    *(__SFR_TRISSET(_ks0108_DB[6])) = _ks0108_DB_MASK[6]; \
-    *(__SFR_TRISSET(_ks0108_DB[7])) = _ks0108_DB_MASK[7]; \
-}
+void extern inline __ks0108_SET_DB_AS_INPUT(void);
 
-#define __ks0108_GOTO_XY(X,Y) { \
-    ks0108_set_page(X); \
-    ks0108_set_address(Y); \
-}
+void extern inline __ks0108_GOTO_XY(unsigned short X, unsigned short Y);
 
-#define __ks0108_COMMIT() { \
-    ks0108_e_high(); \
-    ks0108_e_low(); \
-}
+void extern inline __ks0108_COMMIT(void);
+
+void extern inline __ks0108_NEWLINE(void);
+
 
 #ifdef	__cplusplus
 }

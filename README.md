@@ -12,6 +12,8 @@ At the current state, the main program will produce 8 straight lines, 1 px wide.
 Conventions
 ===========
 
-Macros begin with `__NAME`.
+Macros begin with `__NAME`. If macros could be a function (I mean that is a block `{}` of code) , use `extern inline returntype __NAME`
+
 Internal variable and functions begin with `_name`
+
 Any public function begin with `name`

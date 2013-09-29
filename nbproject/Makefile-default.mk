@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c ks0108.c active_delay.c
+SOURCEFILES_QUOTED_IF_SPACED=ascii.c main.c ks0108.c active_delay.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/ks0108.o ${OBJECTDIR}/active_delay.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/ks0108.o.d ${OBJECTDIR}/active_delay.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ascii.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ks0108.o ${OBJECTDIR}/active_delay.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/ascii.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ks0108.o.d ${OBJECTDIR}/active_delay.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/ks0108.o ${OBJECTDIR}/active_delay.o
+OBJECTFILES=${OBJECTDIR}/ascii.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ks0108.o ${OBJECTDIR}/active_delay.o
 
 # Source Files
-SOURCEFILES=main.c ks0108.c active_delay.c
+SOURCEFILES=ascii.c main.c ks0108.c active_delay.c
 
 
 CFLAGS=
@@ -91,6 +91,12 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/ascii.o: ascii.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/ascii.o.d 
+	@${RM} ${OBJECTDIR}/ascii.o 
+	@${FIXDEPS} "${OBJECTDIR}/ascii.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ascii.o.d" -o ${OBJECTDIR}/ascii.o ascii.c   
+	
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/main.o.d 
@@ -110,6 +116,12 @@ ${OBJECTDIR}/active_delay.o: active_delay.c  nbproject/Makefile-${CND_CONF}.mk
 	@${FIXDEPS} "${OBJECTDIR}/active_delay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/active_delay.o.d" -o ${OBJECTDIR}/active_delay.o active_delay.c   
 	
 else
+${OBJECTDIR}/ascii.o: ascii.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/ascii.o.d 
+	@${RM} ${OBJECTDIR}/ascii.o 
+	@${FIXDEPS} "${OBJECTDIR}/ascii.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ascii.o.d" -o ${OBJECTDIR}/ascii.o ascii.c   
+	
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/main.o.d 
