@@ -76,15 +76,15 @@ extern "C" {
     void ks0108_cls(void);
     void ks0108_write_string(char *string);
 
-void extern inline __ks0108_SET_DB_AS_OUTPUT(void);
+    void extern inline __ks0108_SET_DB_AS_OUTPUT(void);
 
-void extern inline __ks0108_SET_DB_AS_INPUT(void);
+    void extern inline __ks0108_SET_DB_AS_INPUT(void);
 
-void extern inline __ks0108_GOTO_XY(unsigned short X, unsigned short Y);
+    void extern inline __ks0108_GOTO_XY(unsigned short X, unsigned short Y);
 
-void extern inline __ks0108_COMMIT(void);
+    void extern inline __ks0108_COMMIT(void);
 
-void extern inline __ks0108_NEWLINE(void);
+    void extern inline __ks0108_NEWLINE(void);
 
 
 #ifdef	__cplusplus

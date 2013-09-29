@@ -185,12 +185,12 @@ begin: //a label, yes. It's a label used by a goto. [OMG SPAGHETTI CODE!1! stfu]
             }
         }
         //if i == -1, all 0 -> space
-        if(i == -1) // -> s = -1
+        if (i == -1) // -> s = -1
             i = 2; //space is 2 px wide
-        else if(!s) //no space, but 1 char found
+        else if (!s) //no space, but 1 char found
             i = 1;
 
-        if (_ks0108_Y + i > 127) //go on new line, or to start line
+        if (_ks0108_Y + i + 1 > 127) //go on new line, or to start line
         {
             __ks0108_NEWLINE();
             if (*string == ' ' || *string == '\n') {
@@ -223,6 +223,14 @@ begin: //a label, yes. It's a label used by a goto. [OMG SPAGHETTI CODE!1! stfu]
                     ks0108_set_side(ks0108_RIGHT);
                     __ks0108_GOTO_XY(_ks0108_X, _ks0108_Y); //every time I change display side, I have to refresh memory with the correct addresses
                 }
+            }
+            ks0108_write_data(0); //spacing after letter
+            ++_ks0108_Y;
+            if (_ks0108_Y >= 64) //on write, Y always increment by 1
+            {
+                //begin RIGHT display
+                ks0108_set_side(ks0108_RIGHT);
+                __ks0108_GOTO_XY(_ks0108_X, _ks0108_Y); //every time I change display side, I have to refresh memory with the correct addresses
             }
         }
         ++string;
