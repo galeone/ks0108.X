@@ -72,7 +72,7 @@ int main(void) {
 
     //We can use this method to write string witout worrying about character positioning and encoding, this function works for you)
 
-    ks0108_write_string("SUPER\n    MEGA\n        TEST :D\n\n->http://www.nerdz.eu/<-\n\nAndatevene a cagare:\n      brutte seghe     ( cit. )");
+    ks0108_write_string("SUPER\n   MEGA\n      TEST :D\n\n->http://www.nerdz.eu/<-\n\nAndatevene a cagare:\n   brutte seghe    ♫ lol");
 
     return 0;
 }
