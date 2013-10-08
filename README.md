@@ -3,7 +3,7 @@ ks0108.X
 
 Project created to easily manage the LCD controller: ks0108 (Samsung, without characters ROM).
 
-The `pinmask.h` is created for work with PIC-32 PINGUINO. But it can be easily adapted to any other development board due to it's structure.
+The `pinmask.h` is created to work with PIC-32 PINGUINO. But it can be easily adapted to any other development board due to its structure.
 
 In the near future I will document all functions and I'll create a valid readme.
 
@@ -12,8 +12,8 @@ At the current state, the main program will produce 8 straight lines, 1 px wide.
 Conventions
 ===========
 
-Macros begin with `__NAME`. If macros could be a function (I mean that is a block `{}` of code) , use `extern inline returntype __NAME`
+Macros begins with `__NAME`. If macros could be a function (I mean that it is a block `{}` of code) , use `extern inline returntype __NAME`
 
-Internal variable and functions begin with `_name`
+Internal variables and functions begins with `_name`
 
-Any public function begin with `name`
+Any public function begins with `name`
