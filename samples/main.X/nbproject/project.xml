@@ -2,12 +2,12 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>ks0108</name>
-            <creation-uuid>7ee5dc43-d92c-4759-a537-e9ef3c17917c</creation-uuid>
+            <name>main</name>
+            <creation-uuid>52288443-d644-4979-83ab-b316dbe4a415</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
-            <header-extensions>h</header-extensions>
+            <header-extensions/>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
         </data>

@@ -56,6 +56,9 @@ extern "C" {
 
     unsigned short int _ks0108_X, _ks0108_Y; //Global positions, always updated
 
+    /* Initiazlize the screen, enable both lcds and clear screen.+
+     * Set _ks0108_X =  _ks0108_Y = 0 (corner on top-left)
+     */
     void ks0108_init(
             volatile unsigned int *DATA_OR_INSTRUCTION,
             volatile unsigned int * READ_WRITE, volatile unsigned int *E,
@@ -63,27 +66,92 @@ extern "C" {
             volatile unsigned int *CS2,
             volatile unsigned int **DATA_BUS
             );
+
+    /*Set THE CURRENT SELECTED DISPLAY (with set_side) to desired state*/
     void ks0108_set_state(ks0108_display_state state);
+
+    /*Set start line*/
     void ks0108_set_start_line(unsigned short int data_bus_bitmask);
+
+    /* set address (Y coordinate) to desired value.
+     * 0 <= data_bus_bitmask < 128
+     * ks0108_set_y_address(unsigned short int data_bus_bitmask); is a mnemonic alias defined in ks0108.c
+     */
     void ks0108_set_address(unsigned short int data_bus_bitmask);
+
+    /* set page (X coordinate) to desired value.
+     * 0 <= data_bus_bitmask < 64
+     * ks0108_set_x_address(unsigned short int data_bus_bitmask); is a mnemonic alias defined in ks0108.c
+     */
     void ks0108_set_page(unsigned short int data_bus_bitmask);
+
+    /*
+     * Read ks0108 controller status and store in in ks0108_status structure
+     */
     ks0108_status ks0108_status_read(void);
+
+    /*
+     * write RAW data to selected lcd at the current position
+     * 0 <= data_bus_bitmask < xFF
+     */
     void ks0108_write_data(unsigned short int data_bus_bitmask);
+
+    /*
+     * read RAW data at current position
+     */
     unsigned short int ks0108_read_data();
+
+    /*
+     * set E pin to high logical level
+     */
     void ks0108_e_high(void);
+
+    /*
+     * set E pin to low logical level
+     */
     void ks0108_e_low(void);
+
+    /*
+     * enable selected lcd side
+     */
     void ks0108_set_side(ks0108_side side);
+
+    /*
+     * fill all controller memory with 0, set current position to left-top cornet
+     */
     void ks0108_cls(void);
+
+    /*
+     * write a string using ascii.c bitmap. The string MUST be a standard ASCII (no extended set) value.
+     * 0 <= string[0 .. N] < 128
+     * See ascii.c for details
+     */
     void ks0108_write_string(char *string);
 
+    /*
+     * set data bus as output (clearing tristate registers)
+     */
     void extern inline __ks0108_SET_DB_AS_OUTPUT(void);
 
+    /*
+     * set data bus as input (filling tristate registers)
+     */
     void extern inline __ks0108_SET_DB_AS_INPUT(void);
 
+    /*
+     * set current position to lcd and set internal position values _ks0108_X, _ks0108_Y
+     */
     void extern inline __ks0108_GOTO_XY(unsigned short X, unsigned short Y);
 
+    /*
+     * E pulse for a valid amount of time
+     */
     void extern inline __ks0108_COMMIT(void);
 
+    /*
+     * go on the next new line, or go on top.
+     * (increase X address)
+     */
     void extern inline __ks0108_NEWLINE(void);
 
 

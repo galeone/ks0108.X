@@ -26,7 +26,7 @@ extern "C" {
      * _TMR_TYPE_B is 16 bit wide, so it overflows every 2^16 = 65536 count >  62500 => diff = 65536 - 62500 = 3036
      * So has passed a second when _TMR_TYPE_B = 62500
      * So, a millisecond is passed when _TMR_TYPE_B = (62500/1000) = 62.5, rounded to 62 because of function calling that introduces delay
-     * */
+     */
     void type_b_active_delay_ms(int ms);
 
     /*
@@ -34,7 +34,7 @@ extern "C" {
      * This PIC had a 5 stage pipeline, so 1 instruction needs 5 clock periods
      * -> so 1 tick each (80 Mhz / 5 ) / 8 = 2 000 000 Hz = 2 MHz
      * So, a microsecond is passed when _TMR_TYPE_B_2 = (2000000/100000) = 2
-     * */
+     */
     void type_b_active_delay_us(int us);
 
 #ifdef	__cplusplus

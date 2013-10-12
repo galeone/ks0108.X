@@ -28,14 +28,14 @@ CP=cp
 CND_CONF=default
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
-OUTPUT_SUFFIX=elf
-DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_SUFFIX=a
+DEBUGGABLE_SUFFIX=
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
-OUTPUT_SUFFIX=hex
-DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_SUFFIX=a
+DEBUGGABLE_SUFFIX=
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${OUTPUT_SUFFIX}
 endif
 
 # Object Directory
@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=ascii.c main.c ks0108.c active_delay.c
+SOURCEFILES_QUOTED_IF_SPACED=active_delay.c ascii.c ks0108.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ascii.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ks0108.o ${OBJECTDIR}/active_delay.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/ascii.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ks0108.o.d ${OBJECTDIR}/active_delay.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/active_delay.o ${OBJECTDIR}/ascii.o ${OBJECTDIR}/ks0108.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/active_delay.o.d ${OBJECTDIR}/ascii.o.d ${OBJECTDIR}/ks0108.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/ascii.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ks0108.o ${OBJECTDIR}/active_delay.o
+OBJECTFILES=${OBJECTDIR}/active_delay.o ${OBJECTDIR}/ascii.o ${OBJECTDIR}/ks0108.o
 
 # Source Files
-SOURCEFILES=ascii.c main.c ks0108.c active_delay.c
+SOURCEFILES=active_delay.c ascii.c ks0108.c
 
 
 CFLAGS=
@@ -72,7 +72,7 @@ LDLIBSOPTIONS=
 FIXDEPS=fixDeps
 
 .build-conf:  ${BUILD_SUBPROJECTS}
-	${MAKE} ${MAKE_OPTIONS} -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE} ${MAKE_OPTIONS} -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=32MX440F256H
 MP_LINKER_FILE_OPTION=
@@ -91,17 +91,17 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/active_delay.o: active_delay.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/active_delay.o.d 
+	@${RM} ${OBJECTDIR}/active_delay.o 
+	@${FIXDEPS} "${OBJECTDIR}/active_delay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/active_delay.o.d" -o ${OBJECTDIR}/active_delay.o active_delay.c   
+	
 ${OBJECTDIR}/ascii.o: ascii.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/ascii.o.d 
 	@${RM} ${OBJECTDIR}/ascii.o 
 	@${FIXDEPS} "${OBJECTDIR}/ascii.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ascii.o.d" -o ${OBJECTDIR}/ascii.o ascii.c   
-	
-${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/main.o.d 
-	@${RM} ${OBJECTDIR}/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c   
 	
 ${OBJECTDIR}/ks0108.o: ks0108.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
@@ -109,36 +109,24 @@ ${OBJECTDIR}/ks0108.o: ks0108.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/ks0108.o 
 	@${FIXDEPS} "${OBJECTDIR}/ks0108.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ks0108.o.d" -o ${OBJECTDIR}/ks0108.o ks0108.c   
 	
+else
 ${OBJECTDIR}/active_delay.o: active_delay.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/active_delay.o.d 
 	@${RM} ${OBJECTDIR}/active_delay.o 
-	@${FIXDEPS} "${OBJECTDIR}/active_delay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/active_delay.o.d" -o ${OBJECTDIR}/active_delay.o active_delay.c   
+	@${FIXDEPS} "${OBJECTDIR}/active_delay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/active_delay.o.d" -o ${OBJECTDIR}/active_delay.o active_delay.c   
 	
-else
 ${OBJECTDIR}/ascii.o: ascii.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/ascii.o.d 
 	@${RM} ${OBJECTDIR}/ascii.o 
 	@${FIXDEPS} "${OBJECTDIR}/ascii.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ascii.o.d" -o ${OBJECTDIR}/ascii.o ascii.c   
 	
-${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/main.o.d 
-	@${RM} ${OBJECTDIR}/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c   
-	
 ${OBJECTDIR}/ks0108.o: ks0108.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/ks0108.o.d 
 	@${RM} ${OBJECTDIR}/ks0108.o 
 	@${FIXDEPS} "${OBJECTDIR}/ks0108.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ks0108.o.d" -o ${OBJECTDIR}/ks0108.o ks0108.c   
-	
-${OBJECTDIR}/active_delay.o: active_delay.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/active_delay.o.d 
-	@${RM} ${OBJECTDIR}/active_delay.o 
-	@${FIXDEPS} "${OBJECTDIR}/active_delay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/active_delay.o.d" -o ${OBJECTDIR}/active_delay.o active_delay.c   
 	
 endif
 
@@ -149,17 +137,15 @@ else
 endif
 
 # ------------------------------------------------------------------------------------
-# Rules for buildStep: link
+# Rules for buildStep: archive
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mdebugger -D__MPLAB_DEBUGGER_PK3=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"
-	
+	${MP_AR} $(MP_EXTRA_AR_PRE) r dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}    
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"
-	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+	${MP_AR} $(MP_EXTRA_AR_PRE) r dist/${CND_CONF}/${IMAGE_TYPE}/ks0108.X.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}    
 endif
 
 

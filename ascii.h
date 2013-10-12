@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-
+    //Ascii table is defined in ascii.c
     extern const unsigned char _ks0108_ascii[128][7];
 
 #ifdef	__cplusplus
