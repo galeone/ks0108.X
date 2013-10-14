@@ -20,7 +20,7 @@ Learning by examples
 ====================
 At the current state of art, we got only one example that includes pretty much any function useful for a library usage and not for a contributor.
 
-Remember: to use libraries in mplabx ide, you have to include the archive library that you find in `dist/default/production/`, and add root path of this project to your compiler include path (to *.h)
+Remember: to use libraries in MPLABX IDE, you have to include the archive library that you find in `dist/default/production/`, and add root path of this project to your compiler include path (to *.h)
 
 Looking at `samples/main.X/main.c` for a working example).
 
