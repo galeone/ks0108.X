@@ -25,15 +25,15 @@ Remember: to use libraries in MPLABX IDE, you have to include the archive librar
 Looking at `samples/main.X/main.c` for a working example).
 
 The main program do the following steps:
-1. Configures the board timer (b type, active delay, not asynchronous) with the appropriate SFRs.
-2. Initializes the ks0108 library with the appropriate SFRs.
-3. Uses raw methods to draw 8 straight lines, 1 px wide.
-4. Wait a second
-5. Turns on only left side of display and turns off the right one [the right display will not show anything, while the left one will show the 8 lines]
-6. Wait a second
-7. Does the step 5 for the right display
-8. Wait, turns on both display and clears the screen
-9. Use the function ks0108_write_string, to easily write strings to the lcd, without worrying about nothing
++ Configures the board timer (b type, active delay, not asynchronous) with the appropriate SFRs.
++ Initializes the ks0108 library with the appropriate SFRs.
++ Uses raw methods to draw 8 straight lines, 1 px wide.
++ Wait a second
++ Turns on only left side of display and turns off the right one [the right display will not show anything, while the left one will show the 8 lines]
++ Wait a second
++ Does the step 5 for the right display
++ Wait, turns on both display and clears the screen
++ Use the function ks0108_write_string, to easily write strings to the lcd, without worrying about nothing
 
 Contribute
 ==========
