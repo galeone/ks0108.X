@@ -46,3 +46,7 @@ Macros begins with `__NAME`. If macros can be functions (I mean that it is a blo
 Internal variables and functions begins with `_name`
 
 Any public function begins with `name`
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/nerdzeu/ks0108.x/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
